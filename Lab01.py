@@ -9,12 +9,12 @@ class Warehouse:
         self.row =[]
         self.rows = 0
 
-    def addRow(self,t = 0):
+    def addRow(self,t = 1):
         for row in range(t):
             self.row.append([])
             self.rows += 1
     
-    def addProduct(self, r = 0, product = None):
+    def addProduct(self, product = None, r = 0):
         self.row[r].append(product)
         
     def removeproduct(self, r):
@@ -29,24 +29,15 @@ class Warehouse:
             r += 1
         return length,self.row
 
+w = Warehouse()
+w.addRow(3)
+w.addProduct("Razer Keyboard",)
+w.addProduct("Logitech Mouse",1)
+w.addProduct("GTX 1080 Ti",2)
+w.addProduct("GTX 1060",2)
+w.addProduct("Crappy Graphic Card",2)
+w.addProduct("Crappy, ancient keyboard",)
+print(w.summary())
+print(w.row)
+print(w.removeproduct(0))
 
-class Product:
-    
-    def __init__(self,name,crtdate = str(dt.now),expdate = str(dt.now() + timedelta(days=730))):
-        self.name = name
-        self.crtdate = crtdate
-        self.expdate = expdate
-        print(self.name)
-        print(self.crtdate.strftime("%Y/%d/%m"))
-
-    def isExpired(self):
-        if dt.now == self.expdate:
-            return True
-        else:
-            return False
-
-    def iteminfo(self):
-        return [self.name,str(self.crtdate.strftime("%Y/%d/%m")),str(self.expdate.strftime("%Y,%d,%m"))]
-
-gh=Product("Milk")
-print(str(gh.iteminfo))
